@@ -257,3 +257,59 @@ Each repository operation creates and disposes its own `AppDbContext` instance.
 ### Database Context
 
 Each repository operation creates and disposes its own `AppDbContext` instance.
+
+
+## PaymentRepository
+
+**Purpose:** Manages payment records associated with customer orders.
+
+### CRUD Methods
+
+- `AddAsync(Payment payment)` — inserts a payment and returns its generated ID.
+- `GetAllAsync()` — retrieves payments with their associated orders.
+- `GetByIdAsync(int id)` — retrieves one payment with its order details.
+- `UpdateAsync(int id, decimal amount, string paymentMethod, string paymentStatus, string? transactionReference)` — updates payment details.
+- `DeleteAsync(int id)` — deletes a payment if database constraints permit it.
+
+### Validation and Exception Handling
+
+- Payment amount cannot be negative.
+- SQL Server errors 2601 and 2627: handle unique-constraint violations, including duplicate payments for an order.
+- SQL Server error 547: handles foreign-key and check-constraint violations.
+- Other exceptions propagate to the calling layer.
+
+### Entity Relationships
+
+- Each payment belongs to one order.
+- Each order can have at most one payment, enforced by a unique constraint on `OrderId`.
+
+### Database Context
+
+Each repository operation creates and disposes its own `AppDbContext` instance.
+## PaymentRepository
+
+**Purpose:** Manages payment records associated with customer orders.
+
+### CRUD Methods
+
+- `AddAsync(Payment payment)` — inserts a payment and returns its generated ID.
+- `GetAllAsync()` — retrieves payments with their associated orders.
+- `GetByIdAsync(int id)` — retrieves one payment with its order details.
+- `UpdateAsync(int id, decimal amount, string paymentMethod, string paymentStatus, string? transactionReference)` — updates payment details.
+- `DeleteAsync(int id)` — deletes a payment if database constraints permit it.
+
+### Validation and Exception Handling
+
+- Payment amount cannot be negative.
+- SQL Server errors 2601 and 2627: handle unique-constraint violations, including duplicate payments for an order.
+- SQL Server error 547: handles foreign-key and check-constraint violations.
+- Other exceptions propagate to the calling layer.
+
+### Entity Relationships
+
+- Each payment belongs to one order.
+- Each order can have at most one payment, enforced by a unique constraint on `OrderId`.
+
+### Database Context
+
+Each repository operation creates and disposes its own `AppDbContext` instance.
