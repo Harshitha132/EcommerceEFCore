@@ -81,3 +81,33 @@ Each repository operation creates and disposes its own `AppDbContext` instance.
 ### Entity Relationships
 
 Customers can have orders and an associated shopping cart. Database constraints protect related records according to the configured delete behaviors.
+
+
+## CartRepository
+
+**Purpose:** Manages shopping carts and retrieves their associated customer and cart-item details.
+
+### CRUD Methods
+
+- `AddAsync(Cart cart)` — creates a cart and returns its generated ID.
+- `GetAllAsync()` — retrieves carts with their associated customers.
+- `GetByIdAsync(int id)` — retrieves a cart, its customer, cart items, and associated products.
+- `UpdateAsync(int id, int customerId)` — updates the cart's customer association and modification timestamp.
+- `DeleteAsync(int id)` — deletes a cart if database constraints allow it.
+
+### Exception Handling
+
+- SQL Server errors 2601 and 2627: handles duplicate-cart or unique-constraint violations.
+- SQL Server error 547: handles foreign-key constraint violations.
+- Other exceptions propagate to the calling layer.
+
+### Entity Relationships
+
+- Each cart belongs to one customer.
+- A customer can have at most one cart.
+- A cart can contain multiple cart items.
+- Cart items reference products.
+
+### Database Context
+
+Each repository operation creates and disposes its own `AppDbContext` instance.
