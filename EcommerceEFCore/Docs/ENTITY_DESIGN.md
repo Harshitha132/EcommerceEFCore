@@ -97,3 +97,32 @@ Create the Customer model and document its properties and relationships.
 - [ ] Build verified
 - [ ] Documentation updated
 - [ ] Git commit
+
+
+
+## Task 4: CartItem Model
+
+**File:** `Models/CartItem.cs`
+
+| Property | Type | Purpose |
+|---|---|---|
+| CartItemId | int | Primary key |
+| CartId | int | Foreign key to Cart |
+| ProductId | int | Foreign key to Product |
+| Quantity | int | Number of units selected |
+| AddedAt | DateTime | Item addition timestamp |
+| Cart | Cart? | Navigation property to Cart |
+| Product | Product? | Navigation property to Product |
+
+### Relationships
+
+- A cart can contain multiple cart items.
+- Each cart item references one cart.
+- Each cart item references one product.
+
+### Implementation Status
+
+- [x] CartItem model created
+- [ ] Build verified
+- [ ] Documentation updated
+- [ ] Git commit
