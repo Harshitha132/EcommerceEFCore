@@ -21,3 +21,36 @@
 ### Database Context
 
 Each repository operation creates and disposes its own `AppDbContext` instance.
+
+
+## ProductRepository
+
+**Purpose:** Handles CRUD operations for the `Product` entity using Entity Framework Core and SQL Server.
+
+### CRUD Methods
+
+- `AddAsync(Product product)` — inserts a new product and returns its generated `ProductId`.
+- `GetAllAsync()` — retrieves all products, including their associated category details.
+- `GetByIdAsync(int id)` — retrieves a product by ID, including its category.
+- `UpdateAsync(int id, string productName, string? description, decimal price, int stockQuantity, int categoryId)` — updates the product's details and category.
+- `DeleteAsync(int id)` — deletes a product if it exists.
+
+### Entity Relationship
+
+- Each product belongs to a category through `CategoryId`.
+- The repository uses `Include(p => p.Category)` when retrieving products to load their category details.
+- Products referenced by cart items or order items cannot be deleted because of the configured foreign-key restrictions.
+
+### Exception Handling
+
+- **SQL Server errors 2601 and 2627:** Handles unique-index or constraint violations during insertion.
+- **SQL Server error 547:** Handles foreign-key or check-constraint violations, such as an invalid category or a product referenced by cart/order items.
+- Other exceptions propagate to the calling layer for appropriate handling.
+
+### Database Context
+
+Each repository operation creates and disposes its own `AppDbContext` instance.
+
+### Validation
+
+The database enforces constraints that prevent negative prices and stock quantities. Friendly input validation will be implemented in the service layer.
