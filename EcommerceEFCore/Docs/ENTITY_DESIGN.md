@@ -69,3 +69,31 @@ Create the Customer model and document its properties and relationships.
 - [ ] Build verified
 - [ ] Documentation updated
 - [ ] Git commit
+
+
+
+## Task 3: Cart Model
+
+**File:** `Models/Cart.cs`
+
+| Property | Type | Purpose |
+|---|---|---|
+| CartId | int | Primary key |
+| CustomerId | int | Foreign key to Customer |
+| CreatedAt | DateTime | Cart creation timestamp |
+| UpdatedAt | DateTime | Last update timestamp |
+| Customer | Customer? | Navigation property to Customer |
+| CartItems | ICollection<CartItem> | Items contained in the cart |
+
+### Relationships
+
+- A cart belongs to a customer.
+- A cart contains multiple cart items.
+- The intended design allows one cart per customer. We will enforce this relationship in the EF Core configuration.
+
+### Implementation Status
+
+- [x] Cart model created
+- [ ] Build verified
+- [ ] Documentation updated
+- [ ] Git commit
