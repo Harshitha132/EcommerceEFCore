@@ -157,3 +157,30 @@ Create the Customer model and document its properties and relationships.
 - [ ] Git commit
 
 
+## Task 6: OrderItem Model
+
+**File:** `Models/OrderItem.cs`
+
+| Property | Type | Purpose |
+|---|---|---|
+| OrderItemId | int | Primary key |
+| OrderId | int | Foreign key to Order |
+| ProductId | int | Foreign key to Product |
+| Quantity | int | Quantity purchased |
+| UnitPrice | decimal | Unit price at purchase time |
+| Subtotal | decimal | Quantity multiplied by unit price |
+| Order | Order? | Navigation property to Order |
+| Product | Product? | Navigation property to Product |
+
+### Relationships
+
+- An order contains multiple order items.
+- Each order item references one order.
+- Each order item references one product.
+
+### Implementation Status
+
+- [x] OrderItem model created
+- [ ] Build verified
+- [ ] Documentation updated
+- [ ] Git commit
