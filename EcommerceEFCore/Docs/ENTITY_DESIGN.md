@@ -126,3 +126,34 @@ Create the Customer model and document its properties and relationships.
 - [ ] Build verified
 - [ ] Documentation updated
 - [ ] Git commit
+
+
+## Task 5: Order Model
+
+**File:** `Models/Order.cs`
+
+| Property | Type | Purpose |
+|---|---|---|
+| OrderId | int | Primary key |
+| CustomerId | int | Foreign key to Customer |
+| OrderDate | DateTime | Order creation timestamp |
+| TotalAmount | decimal | Total order amount |
+| OrderStatus | string | Current order status |
+| Customer | Customer? | Navigation property to Customer |
+| OrderItems | ICollection<OrderItem> | Items in the order |
+| Payment | Payment? | Associated payment record |
+
+### Relationships
+
+- A customer can place multiple orders.
+- An order contains multiple order items.
+- An order can have an associated payment record.
+
+### Implementation Status
+
+- [x] Order model created
+- [ ] Build verified
+- [ ] Documentation updated
+- [ ] Git commit
+
+
