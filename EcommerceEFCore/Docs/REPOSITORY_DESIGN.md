@@ -141,3 +141,61 @@ Each repository operation creates and disposes its own `AppDbContext` instance.
 ### Database Context
 
 Each repository operation creates and disposes its own `AppDbContext` instance.
+
+
+## OrderRepository
+
+**Purpose:** Manages customer orders and retrieves related customer, order-item, product, and payment information.
+
+### CRUD Methods
+
+- `AddAsync(Order order)` — inserts an order and returns its generated ID.
+- `GetAllAsync()` — retrieves orders with their associated customers.
+- `GetByIdAsync(int id)` — retrieves an order with its customer, order items, products, and payment.
+- `UpdateAsync(int id, string orderStatus, decimal totalAmount)` — updates an order's status and total amount.
+- `DeleteAsync(int id)` — deletes an order if database constraints permit it.
+
+### Exception Handling and Validation
+
+- SQL Server error 547: handles foreign-key and check-constraint violations.
+- Negative total amounts are rejected before saving.
+- Other exceptions propagate to the calling layer.
+
+### Entity Relationships
+
+- Each order belongs to a customer.
+- An order can contain multiple order items.
+- An order can have one associated payment.
+- Foreign-key restrictions protect related customer and payment records.
+
+### Database Context
+
+Each repository operation creates and disposes its own `AppDbContext` instance.
+## OrderRepository
+
+**Purpose:** Manages customer orders and retrieves related customer, order-item, product, and payment information.
+
+### CRUD Methods
+
+- `AddAsync(Order order)` — inserts an order and returns its generated ID.
+- `GetAllAsync()` — retrieves orders with their associated customers.
+- `GetByIdAsync(int id)` — retrieves an order with its customer, order items, products, and payment.
+- `UpdateAsync(int id, string orderStatus, decimal totalAmount)` — updates an order's status and total amount.
+- `DeleteAsync(int id)` — deletes an order if database constraints permit it.
+
+### Exception Handling and Validation
+
+- SQL Server error 547: handles foreign-key and check-constraint violations.
+- Negative total amounts are rejected before saving.
+- Other exceptions propagate to the calling layer.
+
+### Entity Relationships
+
+- Each order belongs to a customer.
+- An order can contain multiple order items.
+- An order can have one associated payment.
+- Foreign-key restrictions protect related customer and payment records.
+
+### Database Context
+
+Each repository operation creates and disposes its own `AppDbContext` instance.
