@@ -184,3 +184,30 @@ Create the Customer model and document its properties and relationships.
 - [ ] Build verified
 - [ ] Documentation updated
 - [ ] Git commit
+
+
+## Task 7: Payment Model
+
+**File:** `Models/Payment.cs`
+
+| Property | Type | Purpose |
+|---|---|---|
+| PaymentId | int | Primary key |
+| OrderId | int | Foreign key to Order |
+| Amount | decimal | Payment amount |
+| PaymentMethod | string | Selected payment method |
+| PaymentStatus | string | Current payment status |
+| TransactionReference | string? | Optional transaction reference |
+| PaymentDate | DateTime | Payment record timestamp |
+| Order | Order? | Navigation property to Order |
+
+### Relationship
+
+Each payment is associated with an order. The intended design allows one payment record per order initially; this relationship will be configured in AppDbContext.
+
+### Implementation Status
+
+- [x] Payment model created
+- [ ] Build verified
+- [ ] Documentation updated
+- [ ] Git commit
