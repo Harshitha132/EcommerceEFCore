@@ -211,3 +211,42 @@ Each payment is associated with an order. The intended design allows one payment
 - [ ] Build verified
 - [ ] Documentation updated
 - [ ] Git commit
+
+
+
+## Models Layer — Completion Summary
+
+### Implemented Entities
+
+1. Category
+2. Product
+3. Customer
+4. Cart
+5. CartItem
+6. Order
+7. OrderItem
+8. Payment
+
+### Key Relationships
+
+- Category has many Products.
+- Customer can place many Orders.
+- Customer has one associated Cart.
+- Cart has many CartItems.
+- Each CartItem references one Product.
+- Order has many OrderItems.
+- Each OrderItem references one Product.
+- Order has an associated Payment.
+
+### Verification
+
+- [x] All eight model files created.
+- [ ] Project build verified.
+- [x] Entity documentation maintained.
+- [ ] Final Models layer commit verified.
+
+### Notes
+
+Entity relationships, delete behaviors, decimal precision, indexes, and database constraints will be configured in the Data layer using Entity Framework Core Fluent API.
+
+Business validation will be implemented in the Services layer.
