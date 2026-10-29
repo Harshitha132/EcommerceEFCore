@@ -54,3 +54,30 @@ Each repository operation creates and disposes its own `AppDbContext` instance.
 ### Validation
 
 The database enforces constraints that prevent negative prices and stock quantities. Friendly input validation will be implemented in the service layer.
+
+
+## CustomerRepository
+
+**Purpose:** Manages customer records using Entity Framework Core.
+
+### CRUD Methods
+
+- `AddAsync(Customer customer)` — inserts a customer and returns the generated ID.
+- `GetAllAsync()` — retrieves all customers.
+- `GetByIdAsync(int id)` — retrieves a customer by ID.
+- `UpdateAsync(int id, string firstName, string lastName, string email, string phoneNumber)` — updates customer details.
+- `DeleteAsync(int id)` — deletes a customer if no related records prevent deletion.
+
+### Exception Handling
+
+- SQL Server errors 2601 and 2627: handles duplicate email or unique-constraint violations.
+- SQL Server error 547: handles foreign-key constraint violations when related records exist.
+- Other exceptions propagate to the calling layer.
+
+### Database Context
+
+Each repository operation creates and disposes its own `AppDbContext` instance.
+
+### Entity Relationships
+
+Customers can have orders and an associated shopping cart. Database constraints protect related records according to the configured delete behaviors.
