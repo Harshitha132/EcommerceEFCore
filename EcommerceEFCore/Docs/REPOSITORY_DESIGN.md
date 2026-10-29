@@ -199,3 +199,61 @@ Each repository operation creates and disposes its own `AppDbContext` instance.
 ### Database Context
 
 Each repository operation creates and disposes its own `AppDbContext` instance.
+
+
+## OrderItemRepository
+
+**Purpose:** Manages individual products associated with customer orders.
+
+### CRUD Methods
+
+- `AddAsync(OrderItem orderItem)` — inserts an order item and returns its generated ID.
+- `GetAllAsync()` — retrieves order items with their orders and products.
+- `GetByIdAsync(int id)` — retrieves one order item with related details.
+- `UpdateAsync(int id, int quantity, decimal unitPrice)` — updates quantity, unit price, and calculated subtotal.
+- `DeleteAsync(int id)` — deletes an order item if database constraints allow it.
+
+### Validation and Exception Handling
+
+- Quantity must be greater than zero.
+- Unit price and subtotal cannot be negative.
+- SQL Server error 547: handles foreign-key and check-constraint violations.
+- Other exceptions propagate to the calling layer.
+
+### Entity Relationships
+
+- Each order item belongs to one order.
+- Each order item references one product.
+- The subtotal is calculated as quantity multiplied by unit price.
+
+### Database Context
+
+Each repository operation creates and disposes its own `AppDbContext` instance.
+## OrderItemRepository
+
+**Purpose:** Manages individual products associated with customer orders.
+
+### CRUD Methods
+
+- `AddAsync(OrderItem orderItem)` — inserts an order item and returns its generated ID.
+- `GetAllAsync()` — retrieves order items with their orders and products.
+- `GetByIdAsync(int id)` — retrieves one order item with related details.
+- `UpdateAsync(int id, int quantity, decimal unitPrice)` — updates quantity, unit price, and calculated subtotal.
+- `DeleteAsync(int id)` — deletes an order item if database constraints allow it.
+
+### Validation and Exception Handling
+
+- Quantity must be greater than zero.
+- Unit price and subtotal cannot be negative.
+- SQL Server error 547: handles foreign-key and check-constraint violations.
+- Other exceptions propagate to the calling layer.
+
+### Entity Relationships
+
+- Each order item belongs to one order.
+- Each order item references one product.
+- The subtotal is calculated as quantity multiplied by unit price.
+
+### Database Context
+
+Each repository operation creates and disposes its own `AppDbContext` instance.
