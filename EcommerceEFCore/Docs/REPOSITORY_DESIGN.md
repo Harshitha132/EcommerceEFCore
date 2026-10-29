@@ -111,3 +111,33 @@ Customers can have orders and an associated shopping cart. Database constraints 
 ### Database Context
 
 Each repository operation creates and disposes its own `AppDbContext` instance.
+
+
+## CartItemRepository
+
+**Purpose:** Manages individual products and their quantities within shopping carts.
+
+### CRUD Methods
+
+- `AddAsync(CartItem cartItem)` — adds a product to a cart and returns the generated ID.
+- `GetAllAsync()` — retrieves cart items with their associated carts and products.
+- `GetByIdAsync(int id)` — retrieves one cart item with its cart and product details.
+- `UpdateAsync(int id, int quantity)` — updates the quantity of an existing cart item.
+- `DeleteAsync(int id)` — removes a cart item if it exists.
+
+### Exception Handling and Validation
+
+- SQL Server errors 2601 and 2627: handles duplicate cart-product combinations.
+- SQL Server error 547: handles foreign-key or check-constraint violations.
+- Quantity must be greater than zero.
+- Other exceptions propagate to the calling layer.
+
+### Entity Relationships
+
+- Each cart item belongs to one cart.
+- Each cart item references one product.
+- A cart cannot contain the same product more than once because of the unique index on `(CartId, ProductId)`.
+
+### Database Context
+
+Each repository operation creates and disposes its own `AppDbContext` instance.
