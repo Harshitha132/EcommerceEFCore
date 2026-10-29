@@ -42,3 +42,30 @@ Relationship: Category (1) → Product (many)
 ## Next Task
 
 Create the Customer model and document its properties and relationships.
+
+## Task 2: Customer Model
+
+**File:** `Models/Customer.cs`
+
+| Property | Type | Purpose |
+|---|---|---|
+| CustomerId | int | Primary key |
+| FirstName | string | Customer's first name |
+| LastName | string | Customer's last name |
+| Email | string | Customer's email address |
+| PhoneNumber | string | Customer's contact number |
+| CreatedAt | DateTime | Record creation timestamp |
+| Orders | ICollection<Order> | Navigation collection for customer orders |
+| Cart | Cart? | Optional navigation property for the customer's cart |
+
+### Relationships
+
+- One customer can place multiple orders.
+- A customer can have one associated cart.
+
+### Implementation Status
+
+- [x] Customer model created
+- [ ] Build verified
+- [ ] Documentation updated
+- [ ] Git commit
