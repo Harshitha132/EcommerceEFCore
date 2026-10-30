@@ -284,3 +284,48 @@ An order belongs to one customer and can contain multiple order items.
 
 - OrderItem belongs to one Order.
 - OrderItem references one Product.
+
+---
+
+## 8. PaymentMenu
+
+**Purpose:** Manages payment records associated with customer orders.
+
+### Menu Options
+
+1. Add Payment
+2. View All Payments
+3. View Payment By ID
+4. Update Payment
+5. Delete Payment
+0. Back to Main Menu
+
+### Methods
+
+- `ShowAsync()` – displays the payment management menu.
+- `AddAsync()` – creates a payment record for an order.
+- `GetAllAsync()` – retrieves all payments.
+- `GetByIdAsync()` – retrieves a payment by ID.
+- `UpdateAsync()` – updates payment amount, method, status, and transaction reference.
+- `DeleteAsync()` – deletes a payment after confirmation.
+- `ReadPaymentMethod()` – collects a valid payment method.
+- `ReadPaymentStatus()` – collects a payment status.
+- `DisplayPayment()` – displays payment details.
+
+### Validation Rules
+
+- Order ID must be greater than zero.
+- Payment amount cannot be negative.
+- Payment method must be Cash, Credit Card, Debit Card, UPI, or Net Banking.
+- Payment status must be Pending, Completed, Failed, or Refunded.
+- The selected order must exist in the database.
+
+### Dependencies
+
+- PaymentService
+- ConsoleInputHelper
+
+### Database Relationship
+
+Each payment belongs to one order. The system allows one payment record per order.
+
