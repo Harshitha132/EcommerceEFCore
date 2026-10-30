@@ -95,3 +95,33 @@
 
 - `CustomerRepository` handles database access.
 - `CustomerService` handles customer validation and business rules.
+
+
+## CartService
+
+**Purpose:** Implements cart-related business rules and coordinates cart operations through `CartRepository`.
+
+### Methods
+
+- `AddAsync(Cart cart)` — validates and creates a cart for a customer.
+- `GetAllAsync()` — retrieves all carts with related details.
+- `GetByIdAsync(int id)` — validates the ID and retrieves a cart.
+- `UpdateAsync(int id, int customerId)` — validates the IDs and updates the cart's customer association.
+- `DeleteAsync(int id)` — validates the ID and requests cart deletion.
+
+### Validation Rules
+
+- Cart object cannot be null.
+- Customer ID must be greater than zero.
+- Cart ID must be greater than zero for retrieval, update, and deletion.
+
+### Exception Handling
+
+- Invalid input throws `ArgumentNullException` or `ArgumentOutOfRangeException`.
+- Database constraint violations are handled by `CartRepository`.
+- Other exceptions propagate to the calling layer.
+
+### Dependencies
+
+- `CartRepository` handles database access.
+- `CartService` handles cart validation and business rules.
