@@ -156,3 +156,39 @@
 
 - `CartItemRepository` handles database access.
 - `CartItemService` handles cart-item validation and business rules.
+
+## OrderService
+
+**Purpose:** Implements order-related business rules and coordinates order operations through `OrderRepository`.
+
+### Methods
+
+- `AddAsync(Order order)` — validates and creates an order with Pending status.
+- `GetAllAsync()` — retrieves all orders with related details.
+- `GetByIdAsync(int id)` — validates the ID and retrieves an order.
+- `UpdateAsync(...)` — validates and updates order status and total amount.
+- `DeleteAsync(int id)` — validates the ID and requests order deletion.
+
+### Validation Rules
+
+- Order object cannot be null.
+- Customer ID must be greater than zero.
+- Order ID must be greater than zero for retrieval, update, and deletion.
+- Total amount cannot be negative.
+- Allowed statuses: Pending, Processing, Shipped, Delivered, Cancelled.
+- A newly created order receives Pending status.
+
+### Exception Handling
+
+- Invalid input throws `ArgumentNullException`, `ArgumentException`, or `ArgumentOutOfRangeException`.
+- Database constraint violations are handled by `OrderRepository`.
+- Other exceptions propagate to the calling layer.
+
+### Dependencies
+
+- `OrderRepository` handles database access.
+- `OrderService` handles order validation and business rules.
+
+### Future Enhancement
+
+Order totals should be calculated from order items. Order creation, item insertion, and stock updates should be coordinated within a database transaction.
