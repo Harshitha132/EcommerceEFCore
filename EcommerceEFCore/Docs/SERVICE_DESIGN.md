@@ -267,3 +267,24 @@ Order totals should be recalculated when order items are added, updated, or dele
 ### Future Enhancement
 
 Payment processing should be integrated with an actual payment gateway. Payment status updates should follow verified payment results rather than being changed arbitrarily by the user.
+
+
+# Helper Classes
+
+## ConsoleInputHelper
+
+**Purpose:** Provides reusable methods for reading and validating console input.
+
+### Methods
+
+- `ReadRequiredString()` — reads non-empty text.
+- `ReadInt()` — reads a valid integer.
+- `ReadPositiveInt()` — reads an integer greater than zero.
+- `ReadNonNegativeDecimal()` — reads a valid non-negative decimal.
+- `ReadConfirmation()` — reads a yes/no confirmation.
+
+### Benefits
+
+- Reduces duplicate input-validation code.
+- Prevents invalid input from immediately terminating the application.
+- Makes console menus easier to maintain.
