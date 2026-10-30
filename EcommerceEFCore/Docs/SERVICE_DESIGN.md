@@ -228,3 +228,42 @@ Order totals should be calculated from order items. Order creation, item inserti
 ### Future Enhancement
 
 Order totals should be recalculated when order items are added, updated, or deleted. These operations should share a database transaction with the parent order update.
+
+
+## PaymentService
+
+**Purpose:** Implements payment-related business rules and coordinates payment operations through `PaymentRepository`.
+
+### Methods
+
+- `AddAsync(Payment payment)` — validates and creates a payment with Pending status.
+- `GetAllAsync()` — retrieves all payments.
+- `GetByIdAsync(int id)` — validates the ID and retrieves a payment.
+- `UpdateAsync(...)` — validates and updates payment details.
+- `DeleteAsync(int id)` — validates the ID and requests payment deletion.
+
+### Validation Rules
+
+- Payment object cannot be null.
+- Order ID must be greater than zero.
+- Payment ID must be greater than zero for retrieval, update, and deletion.
+- Payment amount cannot be negative.
+- Allowed payment methods: Cash, Credit Card, Debit Card, UPI, Net Banking.
+- Allowed payment statuses: Pending, Completed, Failed, Refunded.
+- Transaction reference cannot exceed 100 characters.
+- New payments receive Pending status.
+
+### Exception Handling
+
+- Invalid input throws `ArgumentNullException`, `ArgumentException`, or `ArgumentOutOfRangeException`.
+- Database constraint violations are handled by `PaymentRepository`.
+- Other exceptions propagate to the calling layer.
+
+### Dependencies
+
+- `PaymentRepository` handles database access.
+- `PaymentService` handles payment validation and business rules.
+
+### Future Enhancement
+
+Payment processing should be integrated with an actual payment gateway. Payment status updates should follow verified payment results rather than being changed arbitrarily by the user.
