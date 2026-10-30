@@ -196,3 +196,91 @@ Method signature:
 `UpdateAsync(int id, int quantity)`
 
 The Cart ID and Product ID remain unchanged during an update.
+
+---
+
+## 6. OrderMenu
+
+**Purpose:** Manages customer orders and provides access to order items.
+
+### Menu Options
+
+1. Add Order
+2. View All Orders
+3. View Order By ID
+4. Update Order
+5. Delete Order
+6. Manage Order Items
+0. Back to Main Menu
+
+### Methods
+
+- `ShowAsync()` – displays the order management menu.
+- `AddAsync()` – creates an order for a customer.
+- `GetAllAsync()` – retrieves all orders.
+- `GetByIdAsync()` – retrieves an order by ID.
+- `UpdateAsync()` – updates order status and total amount.
+- `DeleteAsync()` – deletes an order after confirmation.
+- `DisplayOrder()` – displays order details.
+
+### Validation Rules
+
+- Customer ID must be greater than zero.
+- Total amount cannot be negative.
+- Order status must be Pending, Processing, Shipped, Delivered, or Cancelled.
+- The selected customer must exist in the database.
+
+### Dependencies
+
+- OrderService
+- OrderItemMenu
+- ConsoleInputHelper
+
+### Database Relationships
+
+An order belongs to one customer and can contain multiple order items.
+
+---
+
+## 7. OrderItemMenu
+
+**Purpose:** Manages products included in customer orders.
+
+### Menu Options
+
+1. Add Order Item
+2. View All Order Items
+3. View Order Item By ID
+4. Update Order Item
+5. Delete Order Item
+0. Back to Order Menu
+
+### Methods
+
+- `ShowAsync()` – displays the order item management menu.
+- `AddAsync()` – adds a product to an order.
+- `GetAllAsync()` – retrieves all order items.
+- `GetByIdAsync()` – retrieves an order item by ID.
+- `UpdateAsync()` – updates the quantity and unit price of an order item.
+- `DeleteAsync()` – deletes an order item after confirmation.
+- `DisplayOrderItem()` – displays order item details.
+
+### Validation Rules
+
+- Order ID must be greater than zero.
+- Product ID must be greater than zero.
+- Order Item ID must be greater than zero.
+- Quantity must be greater than zero.
+- Unit price cannot be negative.
+- Subtotal is calculated as Quantity × Unit Price.
+- The selected order and product must exist in the database.
+
+### Dependencies
+
+- OrderItemService
+- ConsoleInputHelper
+
+### Database Relationships
+
+- OrderItem belongs to one Order.
+- OrderItem references one Product.
