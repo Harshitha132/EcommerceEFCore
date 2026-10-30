@@ -69,3 +69,41 @@
 ### Database Relationship
 
 Product belongs to Category through CategoryId (Foreign Key).
+
+
+---
+
+## 3. CustomerMenu
+
+**Purpose:** Manages customer records through console-based CRUD operations.
+
+### Menu Options
+
+1. Add Customer
+2. View All Customers
+3. View Customer By ID
+4. Update Customer
+5. Delete Customer
+0. Back to Main Menu
+
+### Methods
+
+- `ShowAsync()` – displays the customer management menu.
+- `AddAsync()` – accepts customer details and creates a customer.
+- `GetAllAsync()` – retrieves and displays all customers.
+- `GetByIdAsync()` – retrieves a customer using their ID.
+- `UpdateAsync()` – updates customer details.
+- `DeleteAsync()` – deletes a customer after confirmation.
+- `DisplayCustomer()` – displays individual customer details.
+
+### Validation Rules
+
+- First name and last name are required.
+- Email is required and must pass service-level validation.
+- Phone number is required.
+- Customer ID must be greater than zero.
+
+### Dependencies
+
+- CustomerService
+- ConsoleInputHelper
