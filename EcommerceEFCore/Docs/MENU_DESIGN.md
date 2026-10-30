@@ -371,3 +371,54 @@ Each payment belongs to one order. The system allows one payment record per orde
 - Payment Management → PaymentMenu
 
 The MainMenu remains active until the user selects Exit.
+
+
+---
+
+## 10. Program.cs – Application Entry Point
+
+**Purpose:** Configures the Generic Host, registers application dependencies, and starts the E-Commerce Management System.
+
+### Responsibilities
+
+1. Creates the Generic Host using `Host.CreateApplicationBuilder()`.
+2. Registers all eight application services using `AddScoped()`.
+3. Registers all management menus using `AddScoped()`.
+4. Builds the host.
+5. Creates a dependency injection scope.
+6. Resolves `MainMenu` using `GetRequiredService()`.
+7. Starts the application by calling `MainMenu.ShowAsync()`.
+
+### Dependency Injection Registrations
+
+**Services**
+- CategoryService
+- ProductService
+- CustomerService
+- CartService
+- CartItemService
+- OrderService
+- OrderItemService
+- PaymentService
+
+**Menus**
+- MainMenu
+- CategoryMenu
+- ProductMenu
+- CustomerMenu
+- CartMenu
+- CartItemMenu
+- OrderMenu
+- OrderItemMenu
+- PaymentMenu
+
+### Application Startup Flow
+
+Host Builder → Service Registration → Menu Registration → Build Host → Create Scope → Resolve MainMenu → ShowAsync()
+
+### Technologies
+
+- .NET 10
+- Microsoft.Extensions.Hosting
+- Microsoft.Extensions.DependencyInjection
+- Entity Framework Core
