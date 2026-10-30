@@ -329,3 +329,45 @@ An order belongs to one customer and can contain multiple order items.
 
 Each payment belongs to one order. The system allows one payment record per order.
 
+
+
+---
+
+## 9. MainMenu
+
+**Purpose:** Acts as the central navigation menu for the E-Commerce Management System.
+
+### Menu Options
+
+1. Category Management
+2. Product Management
+3. Customer Management
+4. Cart Management
+5. Order Management
+6. Payment Management
+0. Exit
+
+### Methods
+
+- `ShowAsync()` – displays the main menu and handles user navigation.
+
+### Dependencies
+
+- CategoryMenu
+- ProductMenu
+- CustomerMenu
+- CartMenu
+- OrderMenu
+- PaymentMenu
+- ConsoleInputHelper
+
+### Navigation Structure
+
+- Category Management → CategoryMenu
+- Product Management → ProductMenu
+- Customer Management → CustomerMenu
+- Cart Management → CartMenu → CartItemMenu
+- Order Management → OrderMenu → OrderItemMenu
+- Payment Management → PaymentMenu
+
+The MainMenu remains active until the user selects Exit.
