@@ -63,3 +63,35 @@
 
 - `ProductRepository` handles database access.
 - `ProductService` handles product validation and business rules.
+
+
+## CustomerService
+
+**Purpose:** Implements customer-related business rules and coordinates customer operations through `CustomerRepository`.
+
+### Methods
+
+- `AddAsync(Customer customer)` — validates and inserts a customer.
+- `GetAllAsync()` — retrieves all customers.
+- `GetByIdAsync(int id)` — validates the ID and retrieves a customer.
+- `UpdateAsync(...)` — validates and updates customer details.
+- `DeleteAsync(int id)` — validates the ID and requests customer deletion.
+
+### Validation Rules
+
+- First name and last name are required and limited to 100 characters each.
+- Email is required, limited to 256 characters, and receives basic format validation.
+- Phone number is required and limited to 20 characters.
+- Email is trimmed and converted to lowercase.
+- Customer ID must be greater than zero for retrieval, update, and deletion.
+
+### Exception Handling
+
+- Invalid input throws `ArgumentException` or `ArgumentOutOfRangeException`.
+- Database constraint violations are handled by `CustomerRepository`.
+- Other exceptions propagate to the calling layer.
+
+### Dependencies
+
+- `CustomerRepository` handles database access.
+- `CustomerService` handles customer validation and business rules.
