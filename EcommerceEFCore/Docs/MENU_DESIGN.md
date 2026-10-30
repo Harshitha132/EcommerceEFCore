@@ -107,3 +107,39 @@ Product belongs to Category through CategoryId (Foreign Key).
 
 - CustomerService
 - ConsoleInputHelper
+
+---
+
+## 4. CartMenu
+
+**Purpose:** Manages customer shopping carts and provides access to cart items.
+
+### Menu Options
+
+1. Add Cart
+2. View All Carts
+3. View Cart By ID
+4. Update Cart
+5. Delete Cart
+6. Manage Cart Items
+0. Back to Main Menu
+
+### Methods
+
+- `ShowAsync()` – displays the cart management menu.
+- `AddAsync()` – creates a cart for a customer.
+- `GetAllAsync()` – retrieves all carts.
+- `GetByIdAsync()` – retrieves a cart by ID.
+- `UpdateAsync()` – updates the customer associated with a cart.
+- `DeleteAsync()` – deletes a cart after confirmation.
+- `DisplayCart()` – displays cart details.
+
+### Dependencies
+
+- CartService
+- CartItemMenu
+- ConsoleInputHelper
+
+### Database Relationship
+
+A cart belongs to one customer and can contain multiple cart items.
