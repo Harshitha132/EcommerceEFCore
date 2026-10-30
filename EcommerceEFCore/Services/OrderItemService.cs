@@ -43,10 +43,9 @@ public class OrderItemService
         ValidateDetails(quantity, unitPrice);
 
         return await _orderItemRepository.UpdateAsync(
-            id,
-            quantity,
-            unitPrice,
-            quantity * unitPrice);
+    id,
+    quantity,
+    unitPrice);
     }
 
     public async Task<bool> DeleteAsync(int id)
