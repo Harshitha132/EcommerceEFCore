@@ -143,3 +143,56 @@ Product belongs to Category through CategoryId (Foreign Key).
 ### Database Relationship
 
 A cart belongs to one customer and can contain multiple cart items.
+
+
+## 5. CartItemMenu
+
+**Purpose:** Manages products added to customer shopping carts through console-based CRUD operations.
+
+### Menu Options
+
+1. Add Cart Item
+2. View All Cart Items
+3. View Cart Item By ID
+4. Update Cart Item
+5. Delete Cart Item
+0. Back to Cart Menu
+
+### Methods
+
+- `ShowAsync()` – displays the cart item management menu.
+- `AddAsync()` – adds a product to a cart with a specified quantity.
+- `GetAllAsync()` – retrieves and displays all cart items.
+- `GetByIdAsync()` – retrieves a cart item using its ID.
+- `UpdateAsync()` – updates the quantity of an existing cart item.
+- `DeleteAsync()` – deletes a cart item after confirmation.
+- `DisplayCartItem()` – displays individual cart item details.
+
+### Validation Rules
+
+- Cart ID must be greater than zero.
+- Product ID must be greater than zero.
+- Cart Item ID must be greater than zero.
+- Quantity must be greater than zero.
+- The selected cart and product must exist in the database.
+- A product should appear only once in a particular cart.
+
+### Dependencies
+
+- CartItemService
+- ConsoleInputHelper
+
+### Database Relationships
+
+- CartItem belongs to one Cart.
+- CartItem references one Product.
+
+### Update Operation
+
+The update operation modifies only the quantity of an existing cart item.
+
+Method signature:
+
+`UpdateAsync(int id, int quantity)`
+
+The Cart ID and Product ID remain unchanged during an update.

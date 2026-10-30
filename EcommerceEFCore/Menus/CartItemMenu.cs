@@ -145,7 +145,8 @@ public class CartItemMenu
     {
         Console.WriteLine("\n===== UPDATE CART ITEM =====");
 
-        int id = ConsoleInputHelper.ReadPositiveInt("Enter cart item ID: ");
+        int id = ConsoleInputHelper.ReadPositiveInt(
+            "Enter cart item ID: ");
 
         try
         {
@@ -159,19 +160,11 @@ public class CartItemMenu
 
             DisplayCartItem(existingItem);
 
-            int cartId =
-                ConsoleInputHelper.ReadPositiveInt("Enter new cart ID: ");
-
-            int productId =
-                ConsoleInputHelper.ReadPositiveInt("Enter new product ID: ");
-
-            int quantity =
-                ConsoleInputHelper.ReadPositiveInt("Enter new quantity: ");
+            int quantity = ConsoleInputHelper.ReadPositiveInt(
+                "Enter new quantity: ");
 
             bool updated = await _service.UpdateAsync(
                 id,
-                cartId,
-                productId,
                 quantity);
 
             Console.WriteLine(
