@@ -125,3 +125,34 @@
 
 - `CartRepository` handles database access.
 - `CartService` handles cart validation and business rules.
+
+## CartItemService
+
+**Purpose:** Implements cart-item business rules and coordinates cart-item operations through `CartItemRepository`.
+
+### Methods
+
+- `AddAsync(CartItem cartItem)` — validates and adds a product to a cart.
+- `GetAllAsync()` — retrieves all cart items.
+- `GetByIdAsync(int id)` — validates the ID and retrieves a cart item.
+- `UpdateAsync(int id, int quantity)` — validates and updates the item quantity.
+- `DeleteAsync(int id)` — validates the ID and requests cart-item deletion.
+
+### Validation Rules
+
+- Cart item cannot be null.
+- Cart ID must be greater than zero.
+- Product ID must be greater than zero.
+- Quantity must be greater than zero.
+- Cart item ID must be greater than zero for retrieval, update, and deletion.
+
+### Exception Handling
+
+- Invalid input throws `ArgumentNullException` or `ArgumentOutOfRangeException`.
+- Database constraint violations are handled by `CartItemRepository`.
+- Other exceptions propagate to the calling layer.
+
+### Dependencies
+
+- `CartItemRepository` handles database access.
+- `CartItemService` handles cart-item validation and business rules.
