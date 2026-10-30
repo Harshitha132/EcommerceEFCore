@@ -192,3 +192,39 @@
 ### Future Enhancement
 
 Order totals should be calculated from order items. Order creation, item insertion, and stock updates should be coordinated within a database transaction.
+
+## OrderItemService
+
+**Purpose:** Implements order-item business rules and coordinates order-item operations through `OrderItemRepository`.
+
+### Methods
+
+- `AddAsync(OrderItem orderItem)` — validates and adds an item to an order.
+- `GetAllAsync()` — retrieves all order items.
+- `GetByIdAsync(int id)` — validates the ID and retrieves an order item.
+- `UpdateAsync(...)` — validates and updates quantity and unit price.
+- `DeleteAsync(int id)` — validates the ID and requests order-item deletion.
+
+### Validation Rules
+
+- Order item cannot be null.
+- Order ID and Product ID must be greater than zero.
+- Order item ID must be greater than zero for retrieval, update, and deletion.
+- Quantity must be greater than zero.
+- Unit price cannot be negative.
+- Subtotal is calculated as Quantity multiplied by UnitPrice.
+
+### Exception Handling
+
+- Invalid input throws `ArgumentNullException` or `ArgumentOutOfRangeException`.
+- Database constraint violations are handled by `OrderItemRepository`.
+- Other exceptions propagate to the calling layer.
+
+### Dependencies
+
+- `OrderItemRepository` handles database access.
+- `OrderItemService` handles validation and subtotal calculation.
+
+### Future Enhancement
+
+Order totals should be recalculated when order items are added, updated, or deleted. These operations should share a database transaction with the parent order update.
