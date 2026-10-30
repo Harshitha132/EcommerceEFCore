@@ -288,3 +288,46 @@ Payment processing should be integrated with an actual payment gateway. Payment 
 - Reduces duplicate input-validation code.
 - Prevents invalid input from immediately terminating the application.
 - Makes console menus easier to maintain.
+
+---
+
+## 5. CartItemMenu
+
+**Purpose:** Manages products added to customer shopping carts.
+
+### Menu Options
+
+1. Add Cart Item
+2. View All Cart Items
+3. View Cart Item By ID
+4. Update Cart Item
+5. Delete Cart Item
+0. Back to Cart Menu
+
+### Methods
+
+- `ShowAsync()` – displays the cart item management menu.
+- `AddAsync()` – adds a product to a cart.
+- `GetAllAsync()` – retrieves all cart items.
+- `GetByIdAsync()` – retrieves a cart item by ID.
+- `UpdateAsync()` – updates the cart, product, and quantity.
+- `DeleteAsync()` – deletes a cart item after confirmation.
+- `DisplayCartItem()` – displays cart item details.
+
+### Validation Rules
+
+- Cart ID must be greater than zero.
+- Product ID must be greater than zero.
+- Quantity must be greater than zero.
+- The cart and product must exist in the database.
+- A product should appear only once in a particular cart.
+
+### Dependencies
+
+- CartItemService
+- ConsoleInputHelper
+
+### Database Relationships
+
+- CartItem belongs to one Cart.
+- CartItem references one Product.
